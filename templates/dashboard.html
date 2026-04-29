@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<body class="app-body">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <svg width="32" height="32" viewBox="0 0 44 44" fill="none">
+        <circle cx="22" cy="22" r="22" fill="#e63946"/>
+        <path d="M22 8 C22 8 10 20 10 27 C10 33.6 15.4 39 22 39 C28.6 39 34 33.6 34 27 C34 20 22 8 22 8Z" fill="white"/>
+      </svg>
+      <div class="sidebar-logo-text">Smart<span>Blood</span><br/>Connect</div>
+    </div>
+    <div id="navLinks"></div>
+    <div class="sidebar-footer">
+      <div class="user-chip">
+        <div class="user-avatar" id="userAvatar">U</div>
+        <div class="user-info">
+          <div class="user-name" id="userName">User</div>
+          <div class="user-role" id="userRole">role</div>
+        </div>
+        <button class="logout-btn" onclick="window.location.href='/app/logout/'" title="Logout">?</button>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div id="appContent"></div>
+  </main>
+
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+    <div class="modal" id="modalBox">
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const u = {
+        username: "{{ request.user.username|escapejs }}",
+        email: "{{ request.user.username|escapejs }}@smartblood.local",
+        role: "{{ request.user.userprofile.role|escapejs }}",
+        name: "{{ request.user.username|escapejs }}",
+        bloodGroup: "{{ request.user.userprofile.blood_group|default:'A+'|escapejs }}"
+      };
+      sessionStorage.setItem('sb_user', JSON.stringify(u));
+    })();
+  </script>
+
+  <script src="{% static 'js/data.js' %}"></script>
+  <script src="{% static 'js/dashboard.js' %}"></script>
+  <script src="{% static 'js/patient.js' %}"></script>
+  <script src="{% static 'js/donor.js' %}"></script>
+  <script src="{% static 'js/admin.js' %}"></script>
+  <script src="{% static 'js/app.js' %}"></script>
+</body>
+{% endblock %}

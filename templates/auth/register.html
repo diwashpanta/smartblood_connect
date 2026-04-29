@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<body class='auth-body'>
+  <div class='auth-split'>
+    <div class='auth-hero'><div class='hero-inner'><h1 class='hero-title'>SmartBlood<br/><em>Connect</em></h1><p class='hero-sub'>Register as patient or donor with Nepal location details.</p></div></div>
+    <div class='auth-form-panel'>
+      <div class='form-section active'>
+        <h2 class='form-title'>Create account</h2>
+        <form method='post'>
+          {% csrf_token %}
+          <div class='field-row'>
+            <div class='field-group'><label>Username</label><input name='username' required></div>
+            <div class='field-group'><label>Phone</label><input name='phone' required></div>
+          </div>
+          <div class='field-row'>
+            <div class='field-group'><label>Role</label><select name='role' required>
+              <option value='patient' {% if default_role == 'patient' %}selected{% endif %}>Patient</option>
+              <option value='donor' {% if default_role == 'donor' %}selected{% endif %}>Donor</option>
+            </select></div>
+            <div class='field-group'><label>Blood Group</label><select name='blood_group' required><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option></select></div>
+          </div>
+          <div class='field-row'>
+            <div class='field-group'><label>Latitude (Nepal)</label><input name='latitude' placeholder='27.7172'></div>
+            <div class='field-group'><label>Longitude (Nepal)</label><input name='longitude' placeholder='85.3240'></div>
+          </div>
+          <div class='field-group'><label>Password</label><input type='password' name='password' required></div>
+          <button type='submit' class='btn-primary full'>Create Account</button>
+        </form>
+        <p class='alt-action'>Already have an account? <a href='{% url "login" %}'>Sign in</a></p>
+      </div>
+    </div>
+  </div>
+</body>
+{% endblock %}

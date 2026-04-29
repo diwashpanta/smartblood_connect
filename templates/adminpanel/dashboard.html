@@ -1,0 +1,9 @@
+{% extends 'base.html' %}{% block content %}
+<h3 class='mb-3'>Admin Dashboard</h3>
+<div class='row g-3'>
+<div class='col-md-3'><div class='card p-3 stat-card'><h6>Users</h6><p class='fs-4 mb-0'>{{users}}</p></div></div>
+<div class='col-md-3'><div class='card p-3 stat-card'><h6>Requests</h6><p class='fs-4 mb-0'>{{requests}}</p></div></div>
+<div class='col-md-3'><div class='card p-3 stat-card'><h6>Inventory</h6><p class='fs-4 mb-0'>{{inventory}}</p></div></div>
+<div class='col-md-3'><div class='card p-3 stat-card'><h6>Notifications</h6><p class='fs-4 mb-0'>{{notifications}}</p></div></div>
+</div>
+{% endblock %}

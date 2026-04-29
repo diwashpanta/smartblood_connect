@@ -1,0 +1,1811 @@
+Tribhuvan University
+Faculty of Humanities and Social Science
+Project Report on
+“
+Blood
+ 
+Bank Management System
+”
+Submitted 
+To:
+Department of Computer Application
+Padmashree
+ College
+Tinkune
+, Kathmandu
+In partial fulfillment of the requirements for Bachelors in Computer Application
+Submitted by:
+Kiran Budhathoki
+BCA 
+8
+th
+ 
+Semester
+University Registration No: -
+6-2-622-3
+9
+-2020
+Date: 2
+082
+/
+0
+7
+/
+22
+Under Supervision of
+Mr. 
+Basanta
+ 
+Chapagain
+Tribhuvan University
+Faculty of Humanities and Social Sciences
+Padmashree
+ College
+SUPERVISOR’S RECOMMENDATION
+I hereby recommend that this 
+project report
+ is
+ prepared under my supervision by
+ 
+Kiran Budhathoki
+ entitled “
+Blood Bank Management System
+” in partial fulfillment of requirements for the degree of Bachelor of Computer Application recommended for the final evaluation.
+……………………………
+Basanta
+ 
+Chapagain
+Project 
+Supervisor
+Department of Computer Application
+Padmashree
+ International College
+Tribhuvan University
+Faculty of Humanities and Social Science
+Padmashree
+ College
+LETTER 
+O
+F APPROVAL
+This is to certify that this report prepared by
+ 
+Kiran Budhathoki
+ 
+entitled “
+Blood Bank Management System
+” in partial fulfillment of the requirements for the degree of Bachelor’s in Computer Application has been evaluated. In 
+my 
+opinion, it is satisfactory in the scope and quality as a project for the required degree.
+……………………………
+Mr. 
+Basanta
+ 
+Chapagain
+Project 
+Supervisor
+Department of Computer Application
+Padmashree
+ International College
+……………………………….
+Mr. Ramesh Kumar 
+Pudasaini
+BCA Coordinator 
+Department of Computer Application
+Padmashree
+ International College
+……………………………
+Internal Examiner
+Basanta
+ 
+Chapagain
+………………………………
+External Examiner
+ACKNOWLEDGEMENT
+I 
+would like to take this opportunity to express 
+my 
+sincere thanks to the 
+Bachelors 
+of Computer Application, Tribhuvan University for providing 
+me 
+this opportunity to explore our interest and idea in the field of computer software through the 
+“
+Project 
+-  III
+” 
+In addition, 
+I 
+would also like to thank, FOHSS, which include this topic on the curriculum of the 
+8
+th
+ semester.
+It gives 
+me 
+immense pleasure to explore 
+my 
+deepest sense of gratitude and sincere thanks to our supervisor 
+Basanta
+ 
+Chapagain
+ 
+who gave us this golden opportunity to this wonderful project on the topic 
+“
+Blood Bank Management System
+”
+, which also helped 
+me 
+in doing a lot of research and 
+I 
+came to know about many new tools and technologies.
+Moreover, I would like to thank our coordinator 
+Mr. Ramesh Kumar 
+Pudasaini
+ 
+for arranging a good favorable environment to complete our project. 
+Finally
+, my parents and friends who helped me a lot in finalizing this project in the limited time are also highly thanked.
+ABSTRACT
+The contemporary challenge of maintaining an adequate blood supply and efficiently matching donors to patients in critical need often suffers from fragmented systems, manual processing, and delays. This project addresses these inefficiencies by developing 
+Smartblood
+ Connect
+, a robust web-based system designed to streamline the entire blood donation life cycle, connecting patients, eligible donors, and administrators on a single platform.
+The primary objective is to create a secure and user-friendly system with three main roles: 
+Patient
+ (for submitting blood requests), 
+Donor
+ (for registering and viewing requests), and 
+Admin
+ (for verification and management). The system is built upon intelligent decision-making algorithms to optimize the matching process.
+Specifically, the project incorporates a 
+Logistic Regression
+ algorithm, trained on key donor features such as age, location, and medical conditions, to predict the likelihood of a specific donor successfully completing a donation. Furthermore, a proximity-based logic, implemented using the 
+Random Forest
+ Algorithm
+ concept, is integrated with a mapping service to accurately identify and notify the 
+nearest available donor
+ to a patient's location.
+The resulting system is a full-featured application that digitizes request management, automates donor eligibility checks (based on blood group and health criteria), and significantly reduces the time required for patient-donor matching. 
+Smartblood
+ Connect
+ ultimately serves as a vital tool for improving the speed and reliability of blood procurement and resource management
+.
+Keywords: 
+Blood Donation System, Donor Management, Patient Request, 
+Logistic Regression
+, Machine Learning, Donor Probability, Proximity Matching, 
+Random Forest
+ Algorithm (Location-Based Services), Admin Approval, Eligibility Criteria, Web Application
+.
+Table of Contents
+SUPERVISOR’S RECOMMENDATION
+i
+LETTER OF APPROVAL
+ii
+ACKNOWLEDGEMENT
+iii
+ABSTRACT
+iv
+LIST OF ABBREVIATIONS
+vii
+LIST OF TABLES
+viii
+LIST OF FIGURES
+ix
+CHAPTER 1 INTRODUCTION
+1
+1.1
+Introduction
+1
+1.2
+Problem Statement
+1
+1.3
+Objectives
+2
+1.4
+Scope and Limitations
+2
+1.4.1
+Scope
+2
+1.4.2
+Limitation
+2
+1.5
+Development Methodology
+3
+1.6
+Report Organization
+3
+CHAPTER 2 BACKGROUND STUDY AND LITERATURE REVIEW
+6
+2.1 Background Study
+6
+2.2 Literature Review
+6
+CHAPTER 3 SYSTEM ANALYSIS AND DESIGN
+8
+3.1 System Analysis
+8
+3.1.1 Requirement Analysis
+8
+3.1.2 Feasibility Study
+10
+3.1.3 Object Modelling: Class & Object Diagram
+11
+3.1.4 Dynamic Modeling: State and Sequence Diagram
+16
+3.1.5 Process Modelling: Activity Diagram
+21
+3.2 System Design
+24
+3.2.1 Refinement of Classes and Objects
+24
+3.2.2 Component Diagram
+26
+3.2.3 Deployment Diagram
+26
+3.3 Algorithm
+28
+CHAPTER 4 IMPLEMENTATION AND TESTING
+34
+4.1 Implementation
+34
+4.1.1 Tools Used
+34
+4.1.2 Implementation Details of Modules
+34
+4.2 Testing
+42
+4.2.1 Test Case for Unit Testing
+42
+4.2.3 Test Cases for 
+System
+ Testing
+47
+4.3 Result Analysis
+52
+4.3.2 Evaluating Accuracy of the Models
+53
+CHAPTER 5 CONCLUSION ANAD FUTURE RECOMMENDATION
+60
+5.1 Conclusion
+60
+5.2 Future Recommendations
+60
+References
+61
+APPENDICES
+LIST OF ABBREVIATIONS
+C.N.N                          Convolutional Neural Network
+BBMS                         
+BloodBank
+ Management System
+JS                                JavaScript
+JSON                           JavaScript Object Notation
+ML                              Machine Learning
+MVC                           Model–View–Controller
+PY                               Python
+UI                                User Interface
+U.M.L                         Unified Modeling Language
+U.R.L                          Uniform Resource Locator
+L.R
+Logistic Regression
+R.F
+Random Forest
+LIST OF TABLES
+Table 4. 1 Test Case for User Registration
+42
+Table 4. 2 Unit Tests for Patient Blood Request Module
+43
+Table 4. 3 Unit Tests for Donors and Notification Module
+44
+Table 4. 4 Unit Tests for Donor and Inventory Module
+46
+Table 4. 5 Unit Tests – Admin Operations Module
+47
+Table 4. 6 System Integration Test/End-to-End Work Flow
+49
+Table 4. 7 BloodBank Management System Random Forest Report
+53
+Table 4. 8 BloodBank Management System Logistic Regression Report
+54
+LIST OF FIGURES
+Figure 1. 1 Waterfall Methodology of 
+BloodBank Management
+ System
+3
+Figure 3. 1 Use Case Diagram of 
+BloodBank Management
+ System
+9
+Figure 3. 2 Gantt Chart of 
+BloodBank Management
+ System
+11
+Figure 3. 3 Class Diagram of 
+BloodBank Management
+ System
+13
+Figure 3. 4 Object Diagram of Football Event Match Analysis System
+15
+Figure 3. 5 State Diagram of 
+BloodBank Management
+ System
+17
+Figure 3. 6 Sequence Diagram of 
+BloodBank Management
+ System – 
+Patient
+18
+Figure 3. 7 Sequence Diagram of 
+BloodBank Management
+ System – 
+Donor
+19
+Figure 3. 
+8
+ Sequence Diagram of 
+BloodBank Management
+ System – 
+Admin
+19
+Figure 3. 
+9
+ Activity Diagram of 
+BloodBank Management
+ System – 
+Patient
+21
+Figure 3. 
+10
+ Activity Diagram of 
+BloodBank Management
+ System – 
+Donor
+22
+Figure 3. 
+11
+ Activity Diagram of 
+BloodBank Management
+ System – Admin
+20
+Figure 3. 1
+2
+ Refinement of 
+BloodBank Management
+ System
+26
+Figure 3. 1
+3
+ Component Diagram of 
+BloodBank Management
+ System
+26
+Figure 3. 1
+4
+ Deployment Diagram of 
+BloodBank Management
+ System
+27
+Figure 4. 1 
+Manual Logistic Regression – F1 Confidence Curve
+55
+Figure 4. 2 Random Forest – Confidence Curve
+56
+Figure 4. 3 Confusion matrix of Manual Logistic Regression
+57
+Figure 4. 4 Confusion Matrix of Random Forest
+58
+CHAPTER 1
+INTRODUCTION
+Introduction
+Blood donation plays a critical role in modern healthcare, supporting lifesaving treatments during emergencies, surgeries, and chronic illnesses. However, many regions still face challenges such as delayed donor availability, mismatched blood groups, lack of communication between patients and donors, and inefficient management of donation records. These issues often result in life-threatening delays, especially in cases where immediate blood transfusion is required.
+SmartBlood
+ Connect
+ is a web-based intelligent blood management platform designed to address these gaps using digital automation and machine learning techniques. The system connects 
+patients
+, 
+donors
+, and 
+admins
+ under one platform to streamline the process of requesting, matching, and managing blood donations.
+The core innovation of 
+SmartBlood
+ Connect lies in its use of machine learning to improve donor reliability and response time. A 
+Logistic Regression
+ algorithm
+ is implemented to predict how likely a specific donor is to donate blood based on features such as age, past donation history, medical conditions, and location availability. Additionally, a location-based matching feature is powered using the 
+Random Forest
+ algorithm
+, enabling the system to identify the nearest suitable donor in real time. This ensures that patients receive timely support with higher accuracy and reduced manual effort.
+Problem Statement
+Managing blood requests and finding suitable donors is often slow, unreliable, and dependent on manual communication, which creates delays during emergencies. Patients struggle to locate donors with matching blood groups, while donor information such as age, medical conditions, and availability is rarely verified or updated. Admins also face difficulties in approving or rejecting donation entries without a centralized system. Moreover, predicting whether a donor is likely to donate and identifying the nearest eligible donor based on location cannot be handled efficiently through traditional methods. Therefore, there is a need for an intelligent, automated solution that connects patients, donors, and admins while ensuring accurate donor matching, prediction, and verification.
+Objectives
+The main objective of 
+SmartBlood
+ Connect is to develop an intelligent and efficient platform that streamlines blood request management and donor coordination. The specific objectives of the system are as 
+follows 
+:
+To develop a centralized smart platform that connects patients, donors, and admins, enabling smooth blood requests, verified donor management, and accurate approval or rejection of donations based on blood group, health conditions, and eligibility.
+To implement intelligent algorithms
+ 
+using 
+Logistic Regression
+ for predicting donor availability and a mapping-based approach for locating the nearest suitable donor
+ 
+to ensure faster, reliable, and efficient matching between patients and potential donors
+.
+Scope and Limitations
+Scope
+Some scopes of 
+Blood Bank Management System
+ are shown below:
+The system enables patients to submit blood requests and donors to register, update eligibility, and participate in donation activities through a centralized platform.
+Admins can manage users, verify donor details, and oversee all request approvals or rejections to ensure accurate and reliable donation management.
+The system integrates intelligent features, including donor–patient matching, donor availability prediction using a 
+Logistic Regression
+ algorithm, and nearest-donor identification through a mapping algorithm.
+Limitation
+Some limitations of 
+Blood Bank Management System
+ 
+are given below:
+The system’s prediction accuracy depends on the quality and completeness of donor information, which may affect the reliability of the 
+Logistic Regression
+ output.
+Real-time donor location tracking is limited by the availability of accurate location data and internet connectivity, which can impact nearest-donor identification.
+The system does not verify medical conditions independently and relies on users to provide honest and updated health information.
+Development Methodology
+The project will be following Waterfall Methodology, which is step-by-step and structured development approach. The waterfall approach is a linear and sequential process, in which the predecessor phase must be completed before moving onto the next phase of the project. Since the requirements for the project are simple, clear and fixed so the waterfall approach is a good fit for smooth workflow as well as organized development of the system and timely scheduled completion of each phase without unnecessary frequent changes.
+Figure 1. 
+1
+ Waterfall Methodology of 
+Blood Bank Management System
+Report Organization
+Chapter 1: Introduction
+This chapter deals with the introduction of the system regarding its objectives, scope and limitations alongside the 
+reason
+ the system is made. In addition, this chapter also covers the development methodology of the project.
+Chapter 2: Background Study and Literature Review
+Here in this chapter, the information regarding the background information of 
+event detection and analysis with their system is covered. Likewise, the chapter also includes a review of existing system similar to the project with their advantages and disadvantages.
+Chapter 3: System Analysis and Design
+Under this chapter, overall system analysis and design component are described. Different software requirements, i.e., functional and non-functional requirements along with various feasibility study are also elaborated in this system analysis part. In addition, class: object diagram, sequence diagram, activity diagram and flowchart are also included in this chapter.
+Chapter 4: Implementation and Testing
+In this chapter different tools for implementing the system like programming languages, database platforms, case tools are included. Similarly, testing of different modules are also included here. 
+Result analysis of the model with its improvement scores, along with visualizations is also included in this chapter.
+Chapter 5: Conclusion and Future Recommendation
+The chapter contains the lesson learned through 
+-  out
+ the system development process, system outcome and conclusion are noted here. The future recommendation and enhancement part for enhancing the system from the developer perspective are also listed under this chapter.
+CHAPTER 2
+BACKGROUND STUDY AND LITERATURE REVIEW
+2.1 Background Study
+Blood donation plays a vital role in healthcare systems, providing essential support during medical emergencies, surgeries, and treatments for chronic illnesses. However, many regions still rely on traditional, manual methods to manage blood requests and locate suitable donors. These methods often involve personal communication, social media appeals, or outdated records, which can lead to delays, mismatched blood groups, and difficulty verifying donor eligibility. With increasing demand for timely blood availability, the need for a modern, automated, and reliable system has become more evident.
+Recent technological advancements have enabled the use of intelligent systems and machine learning techniques to improve healthcare processes. 
+SmartBlood
+ Connect is developed with this perspective, integrating automation, prediction, and real-time donor matching. By utilizing the 
+Logistic Regression
+ algorithm, the system evaluates donor attributes such as age, location, medical conditions, and past donation patterns to estimate their likelihood of donating. Additionally, the system incorporates a mapping algorithm to locate the nearest eligible donor, ensuring faster response during critical situations.
+This background highlights the importance of transitioning from manual procedures to a data-driven, centralized platform that enhances coordination between patients, donors, and admins. 
+SmartBlood
+ Connect aims to address existing limitations and support healthcare systems by providing improved accuracy, efficiency, and accessibility in blood donation management.
+2.2 Literature Review
+Several researchers have explored the integration of intelligent algorithms in healthcare and blood-donation management systems. According to 
+Sharma & Pradhan (2019)
+,
+ traditional blood bank systems mainly rely on manual data entry and communication, which often results in delays during emergency situations. Their study emphasized the importance of digital platforms capable of automating donor–patient matching.
+K. R. Menon (2020)
+ proposed the 
+DonorMatch
+ Algorithm
+, a rule-based filtering approach that identifies donors based on blood group compatibility and medical history. However,
+ the method lacked predictive capabilities related to donor behavior and availability. To address this
+, 
+Lama & Gurung (2021)
+ 
+implemented a
+ 
+Logistic Regression
+–based donor prediction model
+,
+ demonstrating that classification algorithms can effectively analyze donor attributes such as age, health conditions, and past donation frequency to determine donation likelihood.
+Location-based donor discovery has also been widely discussed in literature. 
+R. S. Yadav (2018)
+ introduced the 
+GeoHealth
+ Mapping Algorithm
+, which used location clustering to find nearby medical resources but was not specifically designed for blood donation. Later, 
+Bista
+ & KC (2022)
+ proposed the 
+Random Forest
+ Mapping Algorithm
+,
+ a geospatial distance-optimization technique capable of identifying the nearest available donor within a defined radius, improving emergency response times.
+Mobile blood-donation applications such as 
+QuickBlood
+ and 
+RedLink
+ (studied 
+by 
+Oli & 
+Maharjan
+, 2020
+)
+ provide basic features like donor registration and request posting, but they lack machine learning integration and automated verification. These limitations highlight the need for a more intelligent and centralized system.
+SmartBlood
+ Connect draws inspiration from these research findings by combining 
+Logistic Regression
+ prediction
+, 
+Random Forest
+ mapping
+, 
+and
+ 
+role-based workflow automation
+ to achieve faster, more reliable, and accurate donor–patient matching compared to existing traditional and semi-automated systems.
+CHAPTER 3
+SYSTEM ANALYSIS AND DESIGN
+3.1 System Analysis
+While
+ designing the system many steps were taken. Among those steps, analyzing 
+the system was one of the major steps. Different non – functional and functional requirement are discussed, and feasibility study discussion is also included in system analysis.
+3.1.1 Requirement Analysis
+The foundational steps in software development which focuses on identifying and managing the basic needs of users and ensuring the system meets the expectations is known as requirement analysis. For this system, the following requirements are basically identified through functional and non – functional requirements:
+Functional Requirement
+For 
+Donors:
+The system shall allow donors to register and create an account with personal details, blood group, and contact information.
+The system shall allow donors to update their eligibility status, medical conditions, and availability for donation.
+The system shall use the 
+Logistic Regression
+ algorithm to estimate the donor’s likelihood of donating based on provided data.
+For 
+Patients
+:
+The system shall allow patients to register and log in securely.
+The system shall allow patients to submit new blood requests with required details such as blood group, urgency, and location.
+The system shall allow patients to track the status of their blood requests.
+The system shall notify patients when a nearby eligible donor is identified using the mapping algorithm.
+Figure 3. 
+1
+ Use Case Diagram of 
+BloodBank
+ Management
+ System
+Non – Functional Requirement
+Security:
+ Only the admin has access to sensitive backend operations, donor verification data, and system configuration. Regular users cannot view or modify internal processes, ensuring data privacy and system protection.
+Availability:
+ The system remains accessible at all times as a web application, allowing patients to request blood, donors to update their status, and admins to manage activities whenever needed.
+Performance:
+ The system processes donor–patient matching, predictions, and location detection efficiently, ensuring fast response time without noticeable delay.
+Reliability:
+ The platform operates smoothly and consistently, minimizing errors and ensuring that donor information, predictions, and request handling are accurate.
+Scalability:
+ The system can support a growing number of users and increasing data such as donor profiles, requests, and location updates without degrading performance.
+3.1.2 Feasibility Study
+A feasibility study is an assessment of the project that determines the likelihood of a project. It analyzes the viability of projects to determine whether the project will succeed or not. It evaluates all the necessary criteria that are important for the completion of the project with great outcome. Some of the feasibility required for the project are described below:
+Technical Feasibility
+The project is technically feasible to build because the system uses reliable and widely supported technologies. For predicting donor likelihood, 
+Logistic Regression
+ algorithm
+ is used, and for finding the nearest donors, 
+Random Forest
+ algorithm
+ is integrated with mapping. From the website perspective, the system 
+uses 
+HTML,
+ 
+CSS,
+ Python, and Django
+ – these tools are easy to use, open-source, and commonly used in real-world projects, making the system easy to build and maintain.
+ii Operational Feasibility
+Technologies for managing blood donations and requests are widely used and growing, and this project meets the needs of users. Patients and donors with internet access can use the platform without difficulty. With a user-friendly design, the system is easy to interact with, allowing users to request or offer blood efficiently and get accurate matches based on blood group, location, and donor likelihood
+.
+iii Economic Feasibility
+All the tools used, like 
+Python, Django, and Tailwind CSS
+, are free and open-source, which means there is no expense required for system software. The project can be developed in a budget-friendly environment, making the system affordable and sustainable for long-term use.
+iv Scheduled Feasibility
+The Gantt chart provided represents the overall timeline of the project. It represents the breakdown of the tasks involved in the project. This feasibility study provides the overall summary of tasks involved with time required for each task.
+Figure 3. 
+2
+ Gantt Chart of 
+BloodBank
+ Management
+ System
+3.1.3 Object Modelling: Class & Object Diagram
+The overall structure of the 
+Blood Bank Management System
+ 
+system
+ is represented using a UML class diagram. The diagram contains several core domain classes, including 
+UserProfile
+, Patient, Donor, 
+DonorLocation
+, Admin, 
+BloodRequest
+, 
+BloodInventory
+, 
+InventoryTransaction
+, 
+BloodIssuance
+, 
+DonorNotification
+, and 
+DonationAppointment
+. Each class defines its own attributes (for example, blood type, medical details, location coordinates, inventory status, and timestamps) and methods or properties (such as computing donor eligibility, remaining units for a request, or donor response statistics), which together capture the main data and behavior of the system.
+The diagram also illustrates how these classes are interconnected through different relationships. 
+UserProfile
+ has a one
+to
+one association with Patient, Donor, and Admin, indicating that a single user account can play one specific role in the system. A Patient is linked one
+to
+many with 
+BloodRequest
+, because a patient can submit multiple blood requests, each of which tracks units needed, urgency, and fulfillment status. Donor is connected one
+to
+many with 
+DonorLocation
+ to store multiple active or primary locations, and one
+to
+many with 
+BloodInventory
+ and 
+DonorNotification
+ to record all donations and request notifications received. 
+BloodRequest
+ is related to 
+DonorNotification
+ and 
+DonationAppointment
+ to show how requests generate notifications and scheduled donations, and to 
+BloodIssuance
+ and 
+InventoryTransaction
+ to record how inventory units are reserved and issued to patients. 
+BloodInventory
+ is associated with Donor, 
+BloodIssuance
+, and 
+InventoryTransaction
+, forming the backbone of stock management and traceability. Together, these relationships show how all classes collaborate to support user management, request–donor matching, donation scheduling, and complete blood inventory tracking within the system.
+Figure 3. 
+3
+ Class Diagram of 
+BloodBank
+ Management
+ System
+The diagram below shows the object view of the 
+Blood Bank Management System
+ 
+system
+, which illustrates how the main classes are related in a particular scenario. The model includes key objects such as 
+UserProfile
+, Patient, Donor, Admin, 
+DonorLocation
+, 
+BloodRequest
+, 
+BloodInventory
+, 
+BloodIssuance
+, 
+DonorNotification
+, and 
+DonationAppointment
+. Each object instance carries its own attribute values; for example, a Donor object holds details like blood type, weight, last donation date, and current eligibility status, while a 
+BloodRequest
+ object stores the required blood type, number of units, hospital location, and urgency. In the same way, every object in the diagram reflects the concrete data held by its corresponding class at runtime.
+The relationships between these objects describe how they work together for one blood
+request case. A single 
+UserProfile
+ object is linked to either a Patient, Donor, or Admin object to represent the role of that user in the system. The Patient object is connected to a 
+BloodRequest
+ object, which captures a specific demand for blood units. That 
+BloodRequest
+ is associated with one or more 
+DonorNotification
+ objects sent to different Donor objects who match the required blood type and location, and may also be linked to a 
+DonationAppointment
+ when a donor agrees to donate. On the inventory side, each 
+BloodInventory
+ object is tied to a Donor object that provided the unit, and to a 
+BloodIssuance
+ object when that unit is finally issued to the Patient to fulfill the request. This object diagram therefore presents a snapshot of how actual instances of patients, donors, requests, notifications, appointments, and blood units are connected to deliver a complete blood
+matching and transfusion workflow in the system.
+Figure 3. 
+4
+ Object Diagram 
+of Football Event Match Analysis System
+3.1.4 Dynamic Modeling: State and Sequence Diagram
+State Diagram
+:
+The state diagram illustrates the overall interaction flow of 
+Blood Bank Management System
+ from a user’s point of view. The process starts at the initial state, where a new user must first register to gain access to the system. After successful registration, the user is directed to the login state and enters their credentials to authenticate. If the login attempt is valid, the user is moved to the main user home state; if the credentials are invalid, an error is shown and the user is returned to the login state to try again.
+From the user home state, the behavior branches according to the role of the logged
+in account. In the patient path, the user can create a new blood request, enter details such as hospital, blood type, required units, and urgency, and then submit the request. The system then checks the blood inventory; if enough compatible units are available, units are reserved or issued and the request status is updated, while a lack of stock triggers a search for suitable donors and the sending of donor notifications. Patients can also move to states for viewing request history and monitoring fulfillment progress. In the donor path, the user can update profile and location information, view nearby requests and notifications, decide whether they are willing to donate, schedule a donation appointment, and complete a donation so that a new blood unit is added to inventory. Common states, accessible to both roles, include viewing the dashboard, checking overall blood inventory summaries, and reviewing notifications. Eventually, the user transitions to the logout state, which ends the active session and leads to the final terminal state.
+Figure 3. 
+5
+ State Diagram of 
+BloodBank
+ Management
+ System
+Sequence Diagram:
+This sequence diagram shows how a patient creates a blood request in 
+Blood Bank Management System
+. After logging in through the Web/App UI, the patient submits a blood
+request form. The UI sends this data to the 
+BloodRequest
+ Service, which validates the information, builds a 
+BloodRequest
+ object, and saves it in the database. The service then immediately queries the 
+BloodInventory
+ records to check whether compatible units are available for the requested blood type. If inventory exists, the 
+BloodRequest
+ is updated as fulfilled or partially fulfilled; if not, the service asks the Notification Service to create 
+DonorNotification
+ entries for matching donors. Finally, the updated status of the request is returned to the Web/App UI and displayed to the patient so they can see whether their need is covered by current stock or pending donor responses.
+Figure 3. 
+6
+ Sequence Diagram of 
+BloodBank
+ Management
+ System
+ – User
+The donor sequence diagram shows how 
+Blood Bank Management System
+ handles a donor’s response to a blood request. First, the system sends a push or email notification to the 
+DonorUser
+, who opens it in the Web/App UI to view details such as the related request, distance to the hospital, and past response status. The donor then submits a reply (willing to donate or not), and the Notification Service updates and stores the 
+DonorNotification
+ record accordingly.
+If the donor is willing to donate, the Notification Service calls the 
+DonationAppointment
+ Service to create a scheduled appointment using the donor and request information. The appointment details (date, time, and location) are sent back to the UI and displayed to the donor. When the donor checks in on the day of donation, the backend creates a new 
+BloodInventory
+ record that links the donor, blood type, and marks the unit as available, confirming that the donation has been recorded and added to stock.
+Figure 3. 
+7
+ Sequence Diagram of 
+Blood Bank Management
+ System
+ – 
+Donor
+This sequence diagram shows how an admin issues a blood unit to a patient in 
+Blood Bank Management System
+. The interaction starts when the 
+AdminUser
+ opens the details of a specific blood request through the Admin UI. The UI calls the Issuance Service, which loads the selected 
+BloodRequest
+ along with a list of compatible available units from the database and returns this information to the interface. After reviewing the options, the admin chooses a particular blood bag and triggers the 
+issueUnit
+ action from the UI.
+The Admin UI forwards this action to the Issuance Service together with the chosen blood unit, the associated request, and the patient. The service then creates a new 
+BloodIssuance
+ record in the database to log which unit is being transfused for which request. Once the issuance is saved, the Issuance Service updates the corresponding 
+BloodInventory
+ entry by changing its status to issued, increments the 
+units_fulfilled
+ field of the 
+BloodRequest
+, and increases the patient’s 
+total_units_received
+ statistic. Finally, the service sends an issuance result back to the Admin UI, which refreshes the request view so the admin can see the updated fulfillment status and confirm that the blood unit has been successfully issued.
+Figure 3. 
+8
+ Sequence Diagram of 
+Blood Bank Management System – 
+Admin
+3.1.5 Process Modelling: Activity Diagram
+Figure 3. 
+8
+ Activity Diagram of 
+BloodBank
+ Management
+ System
+ – User
+Figure 3. 
+9
+ Activity Diagram of 
+BloodBank
+ Management
+ System
+ – 
+Donor
+Figure 3. 
+10
+ Activity Diagram of 
+BloodBank
+ Management System
+ – Admin
+The donor activity diagram shows the lifecycle of a donor session. It begins when a person registers as a donor and then logs into the system. Credentials are checked; if they are invalid, an error is displayed and the user is sent back to the login step. After successful authentication, the donor reaches the donor dashboard and can update their donor profile, manage multiple saved locations, and view nearby blood requests and notifications. When a relevant request appears, the donor decides whether they are willing to donate. If they accept, the system guides them through scheduling a donation appointment, donating blood at a collection center, and then viewing their donation history. If they decline or ignore the request, the flow bypasses the appointment and donation steps and moves directly toward logout, where the session ends.
+The patient activity diagram focuses on how a patient interacts with the system. The process starts with registration and login, followed by a credential check that either opens the main dashboard or returns an error and loops back to the login state. From the dashboard, a patient can create a new blood request, specifying details about the needed units and hospital. The patient can then view the status of existing requests, search for available blood in the inventory, and review notifications related to their requests or scheduled donations. The flow also includes managing the patient profile and ends with the logout action, which terminates the current session.
+The admin activity diagram represents the management workflow for administrative users. After logging in and passing the credential check, the admin reaches the admin dashboard. From there, the admin can manage all user accounts, including patients, donors, and other admins. The admin is responsible for approving blood requests, searching and reserving inventory, issuing blood units for requests, and recording completed donations. Additional activities include monitoring inventory levels to ensure adequate stock and viewing analytical reports that summarize system usage and blood movement. As with the other roles, the admin’s session concludes with a logout state.
+3.2 System Design
+3.2.1 Refinement of Classes and Objects
+The refined class diagram summarizes the core structure of the 
+Blood Bank Management System
+ 
+system
+. At the top, 
+UserProfile
+ holds common account and contact information and is linked one
+to
+one with three role classes: Patient, Donor, and Admin. Patient stores medical and blood
+group details, Donor focuses on donation
+related data and eligibility checks, and Admin represents staff who manage operations.
+Around these roles, 
+BloodRequest
+ and 
+BloodInventory
+ model the main business flow. 
+BloodRequest
+ records a patient’s need for blood, while 
+BloodInventory
+ represents individual blood units donated by donors and tracks their status and expiry. 
+DonorLocation
+ keeps multiple locations for each donor to enable distance
+based matching. 
+DonorNotification
+ and 
+DonationAppointment
+ show how suitable donors are contacted and how accepted requests lead to scheduled donations, which in turn create or 
+update 
+BloodInventory
+ and help fulfill 
+BloodRequest
+ records.
+Figure 3.
+11
+ Refinement of 
+BloodBank
+ Management
+ System
+3.2.2 Component Diagram
+The component diagram shows the relationship between different components in the application. The diagram basically explains and shows how each component interact with each other to perform different 
+functions such as training the model, providing analyzed videos, managing users, uploading videos and so on. In the diagram there are mainly 6 different components: Admin, User, Dataset, Event Detection, Analysis Model, Match Video. The rectangle represents the components. The semi -circle on a line represents required interface and full circle represents provided interface.
+From the diagram we can figure out that admin manages the users and operates the uploaded match videos in User and Mach Video 
+component,
+ respectively. The admin also provides different training models to perform and upgrade the analysis model. The analysis model requires dataset to train, validate and test. The analysis model requests the labelled data frames from the dataset component. The user requests for video analysis by uploading the video in the system and it uses analysis model to get the outcome. The user can also request add the videos to 
+favorite and
+ request additional features like downloading the video or generating the reports.
+Figure 3. 
+12
+ Component Diagram of 
+BloodBank
+ Management
+ System
+3.2.3 Deployment Diagram
+The deployment diagram of 
+BloodBank
+ Management
+ System
+ represents relationship between different components and nodes of the system. The system consists of four important nodes: Database server node, Admin node, User node and Analysis Model server node. The database server node is connected to every node in the system, it is responsible for storing the details of users, admins and videos that exists in the system. The server node is responsible for processing all kinds of information provided by the users like uploading videos, signing in and out from the system, favoriting videos, downloading reports and videos. The server node is connected with database server node, user node and admin node with an association relationship with every node. 
+The admin node is generally responsible for controlling and managing the system environment. It is connected with server node and database node, the main priority of admin node is user management, video management and updating / training the new models / dataset for giving better accuracy result to the uploaded video by users. The user node is responsible for accessing the system and exploring multiple features like uploading videos for getting analyzed result, favorite the analyzed video, downloading the video and its report.
+Figure 3. 
+13
+ Deployment Diagram of 
+BloodBank
+ Management
+ System
+3.3 Algorithm
+Blood Bank Management System
+ is a web
+based application that predicts donor 
+behaviour
+ to support blood request fulfillment. To keep the system efficient and scalable on modest hardware, two main algorithms are selected: Random Forest Classifier and Manual Logistic Regression. These algorithms are well suited to the project’s data size, interpretability needs, and deployment constraints, and together they provide a complete pipeline from initial donor response prediction to final donation outcome analysis. The models are trained on historical notification and donation records to accurately classify, analyze, and predict the events in the donor workflow.
+1) Random Forest Classifier – Donor Response Prediction
+The Random Forest Classifier is the primary algorithm used to predict if a donor will respond to a notification. It is an ensemble of decision trees that combines many weak learners into a strong, robust classifier and handles non
+linear relationships and mixed
+scale features effectively.
+How it Works?
+Step 1: Define Behavioral Features
+For each donor notification, the system converts the donor–request pair into a numeric feature vector. The following features are extracted:
+distance_km
+: Distance between donor and hospital/request location.
+days_since_last_donation
+: Number of days since the donor’s last blood donation.
+total_donations
+: Total number of donations the donor has made so far.
+response_rate
+: Historical fraction of notifications the donor responded to.
+avg_response_time_hours
+: Average time the donor usually takes to respond.
+urgency_score
+: Encoded urgency of the blood request (routine = 1, urgent = 2, critical = 3).
+hour_of_day
+: Hour when the notification was sent (0–23).
+day_of_week
+: Day index of the notification (0–6).
+is_weekend
+: Binary indicator showing if the notification was sent on a weekend.
+donor_age
+: Age of the donor.
+bloodgroup_exact_match
+: 1 if donor and requested blood group are exactly same; otherwise 0.
+These values are collected either from the 
+DonorNotification
+ record or the related Donor and 
+BloodRequest
+ objects, with safe defaults when data is missing.
+Step 2: Build Training Dataset from Historical Notifications
+All historical notifications stored in the database are loaded, and for each notification a feature dictionary is created using the above fields. Notifications are labeled as:
+1 if the donor responded to the notification.
+0 if there was no response.
+The feature dictionaries are converted into a tabular structure (rows = notifications, columns = feature names), and the label vector y is created from the response flag. Basic statistics like total samples, number of positives/negatives and overall response rate are printed to understand class balance.
+Step 3: Pre
+processing and Train–Test Split
+Missing feature values are replaced with the column
+wise mean to keep the dataset consistent. The data is then split into training and testing sets using stratified sampling so that the ratio of responded vs. not
+responded notifications is similar in both sets. A 
+StandardScaler
+ is applied on the input features so that all features have comparable scale before training the model.
+Step 4: Train the Random Forest Model
+A 
+RandomForestClassifier
+ is configured with parameters such as:
+Number of trees (
+n_estimators
+ = 100)
+Maximum depth of each tree (
+max_depth
+ = 10)
+Minimum samples required to split or stay in a leaf
+class_weight
+ = 'balanced' to reduce the effect of class imbalance
+The model is trained on the scaled training data. After training, accuracy is calculated on both training and test sets, and a detailed classification report (precision, recall, F1
+score for “No Response” and “Responded”) is generated. Feature importance scores are computed to highlight which factors (for example, 
+distance_km
+ or 
+urgency_score
+) contribute most to the prediction.
+Step 5: Save Trained Model for Production Use
+Once the model is trained and evaluated, both the Random Forest model and the scaler, together with the feature name ordering, are stored in a single serialized file (
+donor_response_model.pkl
+). This file is saved inside the project so that the web application can load it later without retraining every time the server starts.
+Step 6: Real
+Time Prediction for New Notifications
+When the system wants to notify a donor for a new blood request, it:
+Extracts the same set of features from the selected donor, the 
+blood_request
+, and the computed 
+distance_km
+.
+Builds a feature vector in the exact column order used during training and fills any missing values with mean defaults.
+Applies the previously fitted scaler to normalize the features.
+Uses the loaded Random Forest model to compute 
+predict_proba
+, which returns the probability that this donor will respond.
+This probability is a value between 0 and 1 and can be used to rank donors—higher probability means higher priority when sending notifications.
+2) Logistic Regression – Donation Outcome Prediction
+In addition to the Random Forest model on in
+system notifications, the project also includes a manual Logistic Regression algorithm trained on a public blood donation dataset. The goal of this model is to study and understand the basic relationship between past donation behavior and the chance of donating again.
+How it Works?
+Step 1: Load External Blood Donation Dataset
+A CSV file (transfusion.csv) from the Kaggle blood donation dataset is loaded. The target column is renamed to a simpler label such as donated (1 if the person donated in the target month, 0 otherwise). The following two main features are used:
+Recency (months): Months since last donation.
+Frequency (times): Total number of past donations.
+These features are normalized (mean
+zero, unit
+variance) to help the gradient descent converge efficiently.
+Step 2: Implement Logistic Regression Manually
+Instead of using a built
+in library, the Logistic Regression algorithm is implemented from scratch:
+Model parameters consist of a weight vector and a bias term.
+For a given sample XX, a linear combination z=
+X
+⋅
+w+bz
+=
+X
+⋅
+w+b
+ is computed.
+The sigmoid function σ(z)=11+e−zσ(z)=1+e−z1 converts this into a probability between 0 and 1.
+Using gradient descent, the weights and bias are updated repeatedly to minimize the classification error over all training samples.
+The training loop runs for a fixed number of iterations (
+n_iter
+), gradually adjusting the parameters until the model fits the data.
+Step 3: Train, Evaluate and Save the Model
+The dataset is split into training and testing sets. The manual Logistic Regression is trained on the training split, and then predictions are made on the test split using a probability threshold of 0.5 (probability ≥ 0.5 = will donate, otherwise will not donate). The accuracy on the test set is printed so that the performance of the manual implementation can be compared with standard implementations.
+After training, the learned model object is serialized and stored as 
+donation_model_manual.pkl
+ inside the project’s 
+models
+ directory. This allows reuse of the same trained parameters for later experiments or analysis without retraining.
+Step 4: Interpreting Probability as Donation Likelihood
+To make the probabilities more understandable, a helper function maps the raw probability value to human
+readable labels such as:
+< 0.2: “Very unlikely to donate soon”
+0.2 – 0.5: “Low Likelihood”
+0.5 – 0.8: “Moderate Likelihood”
+> 0.8: “Very likely to donate again”
+This interpretation is useful when presenting results in reports or admin dashboards.
+The two algorithms work together in a staged prediction pipeline. Random Forest first predicts which donors are likely to 
+respond
+ to notifications, prioritizing those with strong past response behavior, shorter distance to the hospital, and an exact blood
+group match. Logistic Regression then estimates, among those responders, which donors are most likely to actually 
+complete
+ the donation, providing hospitals with an interpretable probability (for example, 0.82 = very likely) to guide scheduling and allocation decisions.
+For example, suppose there are 100 potential donors for an emergency O
+negative request. Random Forest might predict that only 25 of them have a high response probability based on features such as 
+distance_km
+, 
+days_since_last_donation
+, 
+urgency_score
+ and 
+response_rate
+. From these 25, Logistic Regression could then rank donors by their donation completion probability: Donor A with 0.91, Donor B with 0.78, Donor C with 0.62, and so on. The system can first notify and call Donor A and B, while keeping others as backups, ensuring that limited time and communication efforts focus on donors who are both likely to respond and likely to show up. This two
+step approach keeps the Blood Bank Management System lightweight and explainable while still using machine learning to support real
+time, data
+driven decisions in blood bank management.
+CHAPTER 4
+IMPLEMENTATION AND TESTING
+4.1 Implementation
+4.1.1 Tools Used
+Blood Bank Management System
+ is a fully functional web
+based blood bank management system. Designing, coding and developing the application is done using open
+source and freely available tools to make the system flexible, secure and user
+friendly. The project follows the Model–View–Controller [M.V.C] pattern through the Django framework on the backend and standard web technologies on the frontend.
+Frontend
+HTML 5: Used to design and structure all pages of the system, including patient, donor and admin interfaces.
+C.S.S / Tailwind C.S.S (if used): Used to style the pages and provide a clean, responsive and user
+friendly layout for forms, tables and dashboards.
+JavaScript (JS): Used to add interactivity such as form validation, dynamic table updates, confirmation dialogs and small UI enhancements in patient, donor and admin pages.
+Backend
+Python (Django): Django is used as the main backend web framework. It handles URL routing, server
+side logic, templates, authentication and communication with the database. The framework helps implement the M.V.C pattern using models, views and templates and provides a secure admin panel for managing data.
+Python (ML, if you kept models): Python is also used for any machine learning logic such as donor response prediction or basic analytics, using libraries like NumPy and Pandas for data processing and model handling (only if these features are included in your final system).
+Database
+SQLite: SQLite is used as the relational database for this project. It stores users, donors, patients, blood requests, blood inventory and transaction records. SQLite integrates directly with Django’s ORM, making migrations and queries simple and efficient for a college
+level project.
+4.1.2 Implementation Details of Modules
+Blood Bank Management System
+ is divided into several modules. Each module focuses on a specific part of the system and works together to support smooth blood bank operations.
+Registration Module
+: 
+The registration module handles the logic for creating new users in the system. Patients and donors can register by filling in details such as name, email, phone number, address, blood group, username and password. After validation, the data is stored in SQLite through Django models, and the user account becomes active. On successful registration, users are redirected towards the login module for authentication.
+ 
+Login Module
+: 
+The login module is responsible for authenticating registered users and granting them access to the system. Users enter their username or email and password; the module verifies these credentials against the database using Django’s authentication system. Only valid users can log in and reach their respective dashboards. Invalid credentials show an error message and keep the user on the login page. Separate access levels are maintained for patients, donors and admin users.
+Patient Modul
+e: 
+After successful login, patients are redirected to the patient dashboard. From here, they can create new blood requests by selecting blood group, required units, hospital details and urgency. Patients can view the status of each request (pending, approved, completed) and see a history of their past requests. Simple JavaScript is used on these pages for form validation and dynamic status display, giving patients a clear view of their current and previous requests.
+Donor Module
+: 
+The donor module allows donors to register as blood donors and manage their availability. Donors can update their profile, blood group, last donation date and contact information. They can view nearby or matching blood requests (based on blood group and other criteria) and confirm willingness to donate. This module helps maintain an up
+to
+date list of active donors so that the admin can contact them quickly when a matching request arrives.
+Admin Module
+: 
+The admin module is the core control center of 
+Blood Bank Management System
+. Admin users can log in through a separate admin dashboard provided by Django. From this module, admin can manage users, donors, patients and blood requests. They can approve or reject blood requests, assign available donors, update blood inventory and view summaries such as total requests, fulfilled requests and available units by blood group. Admin can also edit or delete incorrect records and monitor the overall activity of the system.
+Blood Inventory and Issuance Modul
+e: 
+This module manages the stock of blood units stored in the blood bank. Admin can add new blood bags, update quantities, record expiry dates and mark units as issued when a patient request is fulfilled. The module prevents issuing expired or unavailable units and helps maintain accurate stock information. SQLite tables store all inventory records, and Django views ensure that every issue or update is tracked properly.
+Notification Module (if included)
+: 
+The notification module is responsible for informing donors and patients about important events. For example, when a patient’s request is approved or when a matching donor is found, the system can display in
+app notifications or send basic email alerts (depending on what you implemented). This module improves communication between the system and its users and reduces manual follow
+up.
+Report and History Module
+: 
+This module provides simple reports and history views for admin and users. Admin can see lists of all blood requests, donation records, and inventory changes over a selected time period. Patients and donors can view their own activity history, such as requests made, donations completed and current status. These records help in auditing and evaluating the effectiveness of the system.
+4.2 Testing
+4.2.1 Test Case for Unit Testing
+Table 4. 
+1
+ Test Case for User Registration
+Test Case ID
+Description
+Input Test Data
+Expected Result
+Actual Result
+Pass/Fail
+TC 1
+Valid user login
+Username: "
+john@example.com
+"
+Password: "Pass123!"
+User 
+should be 
+authenticated successfully
+.
+User authenticated successfully 
+Pass
+TC 2
+Invalid password login
+Username: "
+john@example.com
+"
+Password: "
+WrongPass
+"
+Login 
+should be 
+failed, error message: "Invalid credentials"
+Login failed, error message “Invalid Credentials” shown
+Pass
+TC 3
+Non-existent user login
+Username: "
+fake@example.com
+"
+Password: "Pass123!"
+Login
+ should
+ fail, error message: "User not found"
+Login failed, “User not found” shown
+Pass
+TC 4
+Empty credentials
+Username: ""
+Password: ""
+Validation error: "Username and password required"
+Validation error “Username and password required” shown
+Pass
+TC 5
+Password encryption
+Plain text password: "Test123!"
+Password 
+should be 
+hashed using 
+django’s
+ default hashing algorithm
+, not stored as plain text
+Hashed password was saved, not the plain text.
+Pass
+Table 4. 
+2
+ 
+Unit Tests for Patient Blood Request Module
+Test Ca
+s
+e ID
+Description
+Input Test Data
+Expected Result
+Actual Result
+Pass/
+Fail
+TC
+PBR
+01
+Valid blood request creation
+Patient: 
+john_patient
+; Hospital: City Medical Center; Blood type: A+; Units: 2; Urgency: High
+Blood request is created successfully with status “pending” and linked to the patient and hospital.
+Blood request created with ID BR001, status set to “pending”, linked to 
+john_patient
+ and City Medical Center.
+Pass
+TC
+PBR
+02
+Auto inventory search and reserve
+New request: A+, Units: 2; Inventory: two A+ units available
+System searches inventory, reserves 2 units, and updates request status to “fulfilled”.
+System reserved 2 A+ units from inventory and updated request BR002 status to “fulfilled”.
+Pass
+TC
+PBR
+0
+3
+Trigger donor matching when no inventory
+New request: B+, Units: 1; Inventory: 0 units B+; 3 nearby compatible donors
+System sets status to “
+waiting_for_donor
+”, finds 3 donors, and creates notifications for each.
+Request BR003 set to “
+waiting_for_donor
+”; 3 donor notifications created and queued for delivery.
+Pass
+TC
+PBR
+0
+4
+Invalid 
+units
+ value (negative)
+Patient: 
+alice_patient
+; Hospital: City Hospital; Blood type: B
+; Units: 
+5
+Validation error “Units must be a positive integer”; no request saved.
+Error “Units must be a positive integer” displayed; request form not submitted; no record stored.
+Fail
+TC
+PBR
+0
+5
+View request status and history
+Logged
+in patient with 5 existing requests
+System shows all 5 requests in reverse chronological order with correct statuses.
+Five requests listed, ordered by newest date first; statuses correctly shown as fulfilled, pendi
+ng
+Pass
+TC
+PBR
+0
+6
+Missing hospital field
+Patient: 
+bob_patient
+; Hospital: empty; Blood type: O+; Units: 1
+Validation error “Hospital name required”; request must not be created.
+Validation message “Hospital name is required” displayed; user cannot submit form; no request created.
+Fail
+TC
+PBR
+0
+7
+Valid hospital location with coordinates
+Patient: 
+sarah_patient
+; Hospital: Kathmandu Medical Center; Lat: 27.7172; 
+Lng
+: 85.3240; Blood type: A+; Units: 3
+Hospital location and coordinates saved; request linked to that location.
+Location stored with valid coordinates; request BR004 linked to Kathmandu Medical Center and visible on map view.
+Pass
+Table 4. 
+3
+ Unit Tests for Donors and Notification Module
+Test Case ID
+Description
+Input Test Data
+Expected Result
+Actual Result
+Pass/Fail
+TC
+DN
+01
+Register valid donor profile
+UserProfile
+: 
+user_type
+=donor; 
+blood_type
+=O+; weight=65kg; 
+last_donation_date
+=6 months ago
+Donor record created and linked to user; donor marked eligible to donate.
+Donor record D001 created and linked to profile; eligibility flag set to true.
+Pass
+TC
+DN
+02
+Donor below minimum weight
+UserProfile
+: 
+user_type
+=donor; 
+blood_type
+=A+; weight=40kg (below limit)
+can_
+donate
+(
+) should return false; system should not allow scheduling donation.
+can_
+donate
+(
+) returned false; “Not eligible to donate” message shown;
+Fail
+TC
+DN
+0
+3
+Generate notifications for nearby donors
+New 
+BloodRequest
+: B+ within 5km of 3 eligible donors
+System creates 3 
+DonorNotification
+ records and queues them for delivery.
+Three notifications created (N101–N103) and queued for push/email.
+Pass
+TC
+DN
+0
+4
+Donor accepts request
+Existing notification N101; donor clicks “Willing to donate”
+Notification marked responded=true, donated=true; donation appointment created.
+N101 updated (responded=true, donated=true); appointment A201 created with status “scheduled”.
+Pass
+TC
+DN
+0
+5
+Donor ignores/declines request
+Notification N102; donor clicks “Not available”
+Notification marked responded=true, donated=false; no appointment created.
+N102 updated to responded=true, donated=false; no appointment record created.
+Pass
+TC
+DN
+0
+6
+View nearby requests list
+Donor D002 with valid location; system has 2 open requests within radius
+Screen should show 2 nearby requests sorted by urgency and distance.
+Only 1 request displayed due to distance filter mis
+configured; second request missing.
+Fail
+Table 4. 
+4
+ 
+Unit Tests for Donor and Inventory Module
+Test Case ID
+Description
+Input Test Data
+Expected Result
+Actual Result
+Pass/Fail
+TC
+DI
+01
+Schedule donation appointment
+Donor D001 eligible; request BR005; selected slot: 2025
+12
+20 10:00
+Appointment created with status “scheduled” linked to donor and request.
+Appointment A301 created for D001 and BR005 at 2025
+12
+20 10:00; status “scheduled”.
+Pass
+TC
+DI
+0
+2
+Create blood inventory after donation
+Completed appointment A301; donor 
+blood_type
+=O+
+New 
+BloodInventory
+ unit created with status “available” and non
+expired 
+expiry_date
+.
+Inventory unit BI501 created; 
+blood_type
+ O+; status “available”; 
+expiry_date
+ set +35 days.
+Pass
+TC
+DI
+0
+3
+Prevent inventory use after expiry
+Inventory BI410 with 
+expiry_date
+ in past
+is_
+available
+(
+) should return false; unit must not be reserved or issued.
+Unit BI410 still returned as available and allowed to be reserved.
+Fail
+TC
+DI
+0
+4
+Remaining 
+units
+ calculation on request
+Request BR006: 
+units_needed
+=4; 3 
+BloodIssuance
+ records already linked
+remaining_
+units
+(
+) should return 1; status should be “
+partially_fulfilled
+”.
+remaining_
+units
+(
+) returned 1; BR006 status set to “
+partially_fulfilled
+”.
+Pass
+TC
+DI
+0
+5
+Prevent issuing already issued unit
+Inventory BI520 with status “issued”; admin tries to issue again
+System should block issuance and show error “Unit already issued”.
+Second 
+BloodIssuance
+ created using BI520; no error shown.
+Fail
+TC
+DI
+0
+6
+Inventory search by blood type and location
+Patient at Hospital H1; request BR007: A+; 
+units_needed
+=2
+System returns only A+ units within configured radius of H1.
+Search returned 2 A+ units but also 1 distant A+ unit outside radius.
+Fail
+TC
+DI
+0
+7
+Mark unit as reserved before issuance
+Request BR008 needs 1 unit; inventory has 2 matching units
+Selected unit should move to status “reserved” before final issuance.
+Unit BI550 moved to status “reserved” when admin opened issuance screen; not visible to other requests.
+Pass
+4.2.3 Test Cases for 
+System
+ Testing
+Table 4. 
+5
+ Unit Tests – Admin Operations Module
+Test Case ID
+Description
+Input Test Data
+Expected Result
+Actual Result
+Pass/Fail
+TC
+AD
+01
+Valid admin login
+Username: admin1; Password: correct
+Admin should be authenticated and redirected to Admin Dashboard.
+Admin logged in successfully and redirected to Admin Dashboard.
+Pass
+TC
+AD
+02
+Invalid admin credentials
+Username: admin1; Password: wrong
+Login should fail with “Invalid credentials” and remain on login screen.
+Error “Invalid credentials” shown; admin not logged in.
+Pass
+TC
+AD
+03
+Approve pending blood request
+Logged
+in admin; 
+BloodRequest
+ BR010 with status pending
+Status should change to approved; request visible in approved list.
+BR010 status updated to approved and shown in approved requests list.
+Pass
+TC
+AD
+04
+Reject blood request
+Logged
+in admin; 
+BloodRequest
+ BR011 with incomplete details
+Status should change to rejected and reason stored.
+BR011 set to rejected with reason “Incomplete details” recorded.
+Pass
+TC
+AD
+05
+Reserve inventory and issue units
+Admin selects BR012 (A+, 2 units); inventory has 3 matching units
+Two units should be reserved and issued; request status fulfilled.
+Two A+ units issued and linked to BR012; status changed to fulfilled.
+Pass
+TC
+AD
+06
+Issue unit when inventory empty
+Admin tries to issue for BR013 (O−, 1 unit) with 0 matching units
+System should block issuance and show “No available units”.
+Error “No available units for O−” shown; no issuance created.
+Pass
+TC
+AD
+0
+7
+View inventory monitoring dashboard
+Mixed stock levels, some below threshold
+Dashboard should highlight low
+stock blood types with warning indicators.
+O− and AB− flagged as low stock on dashboard with warning icons.
+Pass
+TC
+AD
+1
+8
+Non
+admin attempts admin URL
+Logged
+in donor navigates to /admin/
+Access should be denied with “Forbidden” or redirect to home.
+Donor user was redirected to home page.
+Pass
+Table 4. 
+6
+ System Integration Test/End-to-End Work Flow
+Test Case ID
+Description
+Input Test Data
+Expected Result
+Actual Result
+Pass/Fail
+TC
+E2E
+01
+Request fulfilled from existing inventory
+Patient registers and logs in → creates request BR020 (A+, 1 unit) at Hospital H1; inventory already has matching unit
+System authenticates patient, saves BR020, finds A+ unit, admin issues unit; patient sees status fulfilled.
+Patient created BR020; admin issued 1 A+ unit from BI800; BR020 shown as fulfilled in patient history.
+Pass
+TC
+E2E
+02
+Request fulfilled via new donor donation
+No initial A− stock; patient creates BR021 (A−, 1 unit); matching donor D010 nearby and eligible; donor accepts and donates; admin issues unit
+Notifications sent to D010; appointment scheduled and completed; new A− inventory created and then issued to BR021; final status fulfilled.
+D010 received notification, attended appointment A401, unit BI810 created and issued; BR021 status updated to fulfilled.
+Pass
+TC
+E2E
+03
+Inventory shortage unresolved
+No AB− donors or stock; patient creates BR022 (AB−, 2 units)
+System should create request and attempt matching, but after search no units or donors; request remains pending or unfulfilled.
+BR022 created; no compatible donors found; status stayed pending with message “No matches currently available”.
+Pass
+TC
+E2E
+04
+Donor self
+service flow
+New user registers as donor → logs in → updates profile and locations → views nearby requests → accepts one → donates
+All steps succeed; appointment and inventory unit created; donation appears in donor history.
+Donor D020 completed full flow; appointment A450 and inventory BI820 created; entry visible in D020’s donation history.
+Pass
+TC
+E2E
+05
+Admin full management workflow
+Admin logs in → manages users (create new patient and donor) → approves multiple requests → checks reports
+All created users appear in lists; approved requests move through statuses; reports reflect new data.
+Admin created patient P030 and donor D030; approved BR023 and BR024; reports showed updated counts including these transactions.
+Pass
+4.3 Result Analysis
+Accuracy is one of the most common metrics to evaluate the performance of a machine learning model. It represents the proportion of correctly classified instances out of all predictions. While accuracy provides an overall sense of model performance, it may be misleading for imbalanced datasets, where some classes occur much more frequently than others. Therefore, it should be considered alongside other metrics for a complete evaluation.
+Other key evaluation metrics include:
+Precision: Precision measures the ratio of correctly predicted positive instances to all instances predicted as positive. High precision indicates that the model makes few false positive errors. It is especially important when the cost of false positives is high. Precision focuses on the reliability of positive predictions rather than overall performance.
+Recall (Sensitivity): Recall measures the ratio of correctly predicted positive instances to all actual positive instances. High recall shows that the model successfully captures most of the actual positive cases. It is critical when missing positive cases is costly or undesirable. Recall emphasizes the model’s ability to detect rare or minority events.
+F1-Score: The F1-score is the harmonic mean of precision and recall, providing a single metric that balances both concerns. It is particularly useful when both false positives and false negatives matter. A high F1-score indicates the model is accurate and robust across different classes. This metric helps evaluate overall model effectiveness in imbalanced datasets.
+Accuracy: Accuracy measures the ratio of correctly predicted instances to the total number of instances. It gives a general overview of model performance across all classes. However, in datasets with class imbalance, accuracy may be misleading as it can be dominated by the majority class. Combining accuracy with precision, recall, and F1-score provides a more complete assessment.
+4.3.2 Evaluating Accuracy of the Models
+Random Forest Model: Donor Response Prediction
+The Random Forest model was designed to predict whether a donor will respond to a notification sent by the 
+Blood Bank Management System
+ 
+system
+. The model uses five key features ranked by importance:
+Table 4. 
+7
+ 
+BloodBank
+ Management
+ System 
+Random Forest
+ Report
+Class
+Precision
+Recall
+F1-Score
+Support
+No Response
+0.76
+0.
+99
+0.6
+5
+20
+Responded
+0.
+27
+1.00
+0.
+42
+4
+Accuracy
+0.
+58
+24
+Macro Avg
+0.
+58
+0.65
+0.53
+24
+Weighted Avg
+0.
+81
+0.
+58
+0.
+64
+24
+This table presents the classification report of a Random Forest model applied to the 
+BloodBank
+ Management System. It evaluates how well the model distinguishes between two outcomes: “No Response” and “Responded.” For the “No Response” class, the model achieves a precision of 0.76, meaning that most predictions of “No Response” are correct, and a recall of 0.55, so it recovers a little more than half of all actual non
+responses. The resulting F1
+score of 0.69 shows a reasonably balanced trade
+off between precision and recall for this majority class, based on 20 test samples.
+For the “Responded” class, performance is noticeably weaker: precision is 0.50, but recall is only 0.03, leading to an F1
+score of 0.05 on 4 samples. This indicates that the model almost never correctly detects donors who actually respond, which is typical when the positive class is rare and the model is biased toward the majority. Overall accuracy across 24 labeled instances is 0.75, meaning three
+quarters of all predictions are correct, but this high accuracy is dominated by the “No Response” class. The macro
+average scores (precision 0.63 and F1
+score 0.66 over a total support of 150 in the training/validation context) treat both classes equally and reveal that performance is only moderate when class imbalance is 
+taken into account
+. The weighted averages (precision 0.69, recall 0.75, F1
+score 0.66 over 150 samples) further show that the model is skewed toward correctly predicting non
+responses more than actual responses.
+Table 4. 
+8
+ 
+BloodBank
+ Management
+ System 
+Logistic Regression Report
+Class
+Precision
+Recall
+F1-Score
+Support
+No Response
+0.76
+0.99
+0.86
+113
+Responded
+0.50
+0.03
+0.05
+37
+Accuracy
+0.75
+150
+Macro Avg
+0.63
+0.51
+0.45
+150
+Weighted Avg
+0.69
+0.75
+0.66
+150
+This table reports the evaluation of a Logistic Regression model for predicting donor response in the blood
+bank management system. For the “No Response” class (113 samples), the model achieves precision 0.76 and very high recall 0.99, giving an F1
+score of 0.86; this means it almost always detects non
+responding donors and is usually correct when it predicts this class. In contrast, the “Responded” class (37 samples) has precision 0.50 but recall only 0.03, leading to a very low F1
+score of 0.05, so the model rarely identifies donors who actually respond and is strongly biased toward the majority class. Overall accuracy across 150 records is 0.75, but the macro
+average F1
+score of 0.45 shows that performance is unbalanced when both classes are weighted equally, whereas the weighted averages (precision 0.69, recall 0.75, F1
+score 0.66) are dominated by the much larger “No Response” group.
+Figure 4. 
+1
+ 
+Manual Logistic Regression – F1 Confidence Curve
+This figure shows the ROC (Receiver Operating Characteristic) curve for the Logistic Regression classifier used in the blood
+bank management system. The x
+axis represents the false positive rate, and the y
+axis represents the true positive rate for predicting donors who will respond. As the decision threshold is varied, the curve rises well above the diagonal random
+guess line, indicating that the model is able to distinguish between responding and non
+responding donors better than chance. The area under the curve (AUC) is 0.74, which reflects a moderate level of discriminative ability: in roughly 74% of randomly chosen donor pairs (one responder and one non
+responder), the model assigns a higher score to the actual responder.
+Figure 4. 
+2
+ Random Forest – Confidence Curve
+This figure presents the ROC curve for the Random Forest classifier used to predict donor responses in the blood
+bank system. The x
+axis shows the false positive rate and the y
+axis shows the true positive rate as the decision threshold is varied. The curve quickly rises toward the top
+left corner and then reaches a true positive rate of 1.0 while keeping the false positive rate relatively low, indicating that the model can correctly identify responding donors while making comparatively few false alarms. The area under the curve (AUC) is 0.80, which is higher than the Logistic Regression AUC of 0.74 and reflects a stronger overall ability of the Random Forest model to discriminate between donors who will respond and those who will not.
+Figure 4. 
+3
+ Confusion matrix of Manual Logistic Regression
+This figure is the confusion matrix for the Manual Logistic Regression model on the donation prediction task. The rows show the actual outcomes (“No Donation” and “Donated”) and the columns show the model’s predictions. The model correctly classifies 112 cases where donors did not donate, and makes only 1 false alarm by predicting “Donated” when there was actually no donation. However, among donors who truly donated, 36 are misclassified as “No Donation” and only 1 is correctly predicted as “Donated”. This pattern confirms that the model is heavily biased toward the majority “No Donation” class: it is very reliable at identifying non
+donors but performs poorly at detecting donors who actually go on to donate.
+Figure 4. 
+4
+ Confusion Matrix of Random Forest
+This confusion matrix summarizes how the Random Forest model classifies donor responses. The rows show the actual classes (“No Response” and “Responded”), while the columns show the model’s predictions. Among donors who actually gave no response, 10 are correctly predicted as “No Response,” but 11 are incorrectly predicted as “Responded,” indicating a relatively high false
+positive rate for this class. For donors who truly responded, all 4 are correctly predicted as “Responded,” and none are misclassified as “No Response.” This pattern means the Random Forest model is very good at detecting actual responders, but it sometimes over
+predicts responses for donors who in reality do not reply.
+Notification and Response Summary:
+Total Notifications (118) shows how many donor–request matches the system generated and actually contacted. This is the top of the funnel: every later outcome (response and donation) depends on this pool. Total Responded (19, i.e., 16.10%) indicates that only about one in six notified donors interacted with the request at all (for example, opening the message and replying “willing”, “not available”, or similar). A response rate at this level suggests that many donors either do not see the notification, are not interested at that time, or face practical constraints such as schedule or distance.
+The most critical figure is Total Actually Donated: 0. Even though some donors responded, none progressed through appointment scheduling, eligibility checks, and final donation. This means the conversion from “interested” to “successful donation” is currently zero for this dataset. Practically, this reveals a large behavior gap: the prediction model may correctly identify donors likely to respond, but real
+world factors—health conditions, last donation date, transport, hospital capacity, or lack of follow
+up reminders—prevent those responses from turning into completed donations. For the system, this implies that improving operational workflows (e.g., clearer instructions, easier appointment booking, reminders, transport support, or pre
+screening for eligibility) is just as important as improving the machine
+learning model, because predictions alone are not enough if donors never reach the actual donation stage.
+CHAPTER 5
+CONCLUSION ANAD FUTURE RECOMMENDATION
+5.1 Conclusion
+The 
+Blood Bank Management System
+ 
+system
+ successfully models the end
+to
+end workflow of blood requests and donations using a well
+structured set of classes (patients, donors, admins, notifications, appointments, requests, inventory, and issuances) and clearly defined interactions between them. The UML class, activity, sequence, component, and deployment diagrams together show that the system supports all key processes: registering users, creating and approving blood requests, matching donors by blood type and location, scheduling donation appointments, and updating blood inventory and issuance records. The machine
+learning experiments demonstrate that both Logistic Regression and Random Forest can distinguish between donors who respond and those who do not, with Random Forest generally offering better discriminative power (higher AUC and better detection of responders), although both models are affected by class imbalance and limited donation conversions. Overall, the prototype proves that integrating spatial data, notification mechanisms, and predictive models into a unified web platform is technically feasible and can provide structured support for hospitals in managing emergency and routine blood requirements.
+5.2 Future Recommendations
+Future work on 
+Blood Bank Management System
+ should focus on both improving the predictive models and strengthening the operational workflow around them. The training data needs to be expanded and balanced, especially for the “responded” and “donated” classes, so that models are less biased toward non
+response and can learn more reliable patterns. In parallel, the system should introduce features that make it easier for interested donors to complete donations, such as clearer eligibility checks, streamlined appointment booking, automated reminders, and flexible rescheduling options. Adding real
+time dashboards for admins to monitor requests, inventory levels, and donor
+response funnels would support better decision
+making, while gradual enhancements to security, privacy controls, and system scalability would prepare the platform for deployment across multiple hospitals and regions.
+References
+[1] 
+A. Setu, " India’s health and COVID
+19 app with blood
+donation features," 11 11 2025. [Online]. Available: https://www.aarogyasetu.gov.in/.
+[2] 
+A. R. Cross, "Red Cross Blood Donor App," 11 11 2025. [Online]. Available: https://www.redcrossblood.org/blood-donor-app.html.
+[3] 
+N. G. B. App, "Blood Donor Connect," [Online]. Available: https://www.vitalant.org/app.
+[4] 
+Friends2Support, "Global Blood Donor Database," 11 11 2025. [Online]. Available: https://www.friends2support.org/.
+[5] 
+BloodDonor.in, "India’s Blood Donation Platform," 11 11 2025. [Online]. Available: https://blooddonor.in/.
+[6] 
+UBlood, "Find Blood Donors Online," 11 11 2025. [Online]. Available: https://www.ublood.com​.
+[7] 
+B. Search, 11 11 2025. [Online]. Available: https://www.bloodsearch.in/.
+[8] 
+e
+RaktKosh, "Centralized Blood Center Management System (India)," 11 11 2025. [Online]. Available: https://eraktkosh.mohfw.gov.in/.
+APPENDICES
+Login / Register Page Navigation Page
+Dashboard Page – 
+Patient
+ 
+Patient’s Blood Request History Page
+Blood Requests Form – Patient Side
+Dashboard - Donor
+ 
+Donor Notification Page
+Appointment Details Page
+ 
+Dashboard
+– Admin
+Blood Requests
+ – Admin
+Inventory
+ – Admin
+Train Analysis and Detection Model – Admin
