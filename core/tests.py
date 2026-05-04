@@ -1,7 +1,8 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
 from rest_framework.test import APIClient
-from .models import UserProfile, BloodRequest
+from .models import UserProfile, BloodRequest, DonorNotification, DonationAppointment
+from django.urls import reverse
 
 class RolePermissionTests(TestCase):
     def setUp(self):
@@ -45,3 +46,45 @@ class RolePermissionTests(TestCase):
         c.logout()
         c.login(username='adminx', password='Pass12345')
         self.assertEqual(c.get('/app/adminpanel/dashboard/').status_code, 200)
+
+    def test_admin_user_create_and_delete(self):
+        c = APIClient(); c.force_authenticate(user=self.admin_user)
+        resp = c.post('/app/api/profiles/create_user/', {'username': 'newdonor', 'password': 'Pass12345', 'role': 'donor', 'blood_group': 'B+', 'phone': '98'}, format='json')
+        self.assertEqual(resp.status_code, 201)
+        pid = resp.data['id']
+        d = c.delete(f'/app/api/profiles/{pid}/remove_user/')
+        self.assertEqual(d.status_code, 204)
+
+    def test_inventory_bulk_add_admin_only(self):
+        c = APIClient(); c.force_authenticate(user=self.admin_user)
+        resp = c.post('/app/api/inventory/bulk_add/', {'blood_group':'A+','units':2,'expires_on':'2030-01-01'}, format='json')
+        self.assertEqual(resp.status_code, 201)
+        c2 = APIClient(); c2.force_authenticate(user=self.donor_user)
+        deny = c2.post('/app/api/inventory/bulk_add/', {'blood_group':'A+','units':1,'expires_on':'2030-01-01'}, format='json')
+        self.assertEqual(deny.status_code, 403)
+
+    def test_donor_response_creates_appointment_and_complete(self):
+        req = BloodRequest.objects.create(patient=self.patient_profile,blood_group='A+',units_needed=1,urgency='urgent',hospital_name='H',hospital_address='A',latitude=1,longitude=2,status='approved')
+        note = DonorNotification.objects.create(request=req, donor=self.donor_profile, response_probability=0.9)
+        c = APIClient(); c.force_authenticate(user=self.donor_user)
+        r = c.post(f'/app/api/notifications/{note.id}/respond/', {'willing': True}, format='json')
+        self.assertEqual(r.status_code, 200)
+        appt = DonationAppointment.objects.get(request=req, donor=self.donor_profile)
+        done = c.post(f'/app/api/appointments/{appt.id}/complete/')
+        self.assertEqual(done.status_code, 200)
+
+    def test_dashboard_data_endpoint_dynamic(self):
+        c = self.client
+        c.login(username='adminx', password='Pass12345')
+        resp = c.get('/app/dashboard/data/')
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn('users', resp.json())
+        self.assertIn('requests', resp.json())
+
+    def test_admin_user_crud_flow_integration(self):
+        c = APIClient(); c.force_authenticate(user=self.admin_user)
+        create = c.post('/app/api/profiles/create_user/', {'username': 'flowuser', 'password': 'Pass12345', 'role': 'patient', 'blood_group': 'O+', 'phone':'99'}, format='json')
+        self.assertEqual(create.status_code, 201)
+        pid = create.data['id']
+        delete = c.delete(f'/app/api/profiles/{pid}/remove_user/')
+        self.assertEqual(delete.status_code, 204)

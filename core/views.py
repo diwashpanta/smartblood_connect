@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.http import JsonResponse
+from django.utils import timezone
 from django.views.decorators.csrf import ensure_csrf_cookie
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
@@ -11,7 +12,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-from .models import UserProfile, BloodRequest, DonorNotification, BloodInventoryUnit, BloodIssuance, DonationAppointment
+from .models import UserProfile, BloodRequest, DonorNotification, BloodInventoryUnit, BloodIssuance, DonationAppointment, InventoryTransaction
 from .serializers import UserProfileSerializer, BloodRequestSerializer, DonorNotificationSerializer, BloodInventoryUnitSerializer, BloodIssuanceSerializer, DonationAppointmentSerializer
 from .permissions import IsAdminRole
 from .services import donor_candidates_for_request
@@ -141,6 +142,17 @@ def dashboard_data(request):
             'inventory_available': inventory_qs.filter(status='available').count(),
             'users': users_qs.count(),
         },
+        'appointments': [
+            {
+                'id': a.id,
+                'request_id': a.request_id,
+                'donor': a.donor.user.username,
+                'scheduled_at': a.scheduled_at.isoformat(),
+                'location': a.location,
+                'completed': a.completed,
+            }
+            for a in DonationAppointment.objects.select_related('donor', 'request').order_by('-scheduled_at')[:200]
+        ],
     }
     return JsonResponse(payload)
 
@@ -170,6 +182,35 @@ class UserProfileViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = UserProfileSerializer
     permission_classes = [IsAuthenticated]
 
+    @action(detail=False, methods=['post'], permission_classes=[IsAuthenticated, IsAdminRole])
+    def create_user(self, request):
+        username = (request.data.get('username') or '').strip()
+        password = request.data.get('password') or 'ChangeMe123!'
+        role = request.data.get('role') or 'patient'
+        if not username:
+            return Response({'detail': 'username required'}, status=400)
+        if User.objects.filter(username=username).exists():
+            return Response({'detail': 'username exists'}, status=400)
+        user = User.objects.create_user(username=username, password=password)
+        profile = UserProfile.objects.create(
+            user=user,
+            role=role,
+            phone=request.data.get('phone', ''),
+            blood_group=request.data.get('blood_group', ''),
+            is_verified=True,
+            latitude=request.data.get('latitude'),
+            longitude=request.data.get('longitude'),
+        )
+        return Response(UserProfileSerializer(profile).data, status=201)
+
+    @action(detail=True, methods=['delete'], permission_classes=[IsAuthenticated, IsAdminRole])
+    def remove_user(self, request, pk=None):
+        profile = self.get_object()
+        if profile.user == request.user:
+            return Response({'detail': 'cannot delete yourself'}, status=400)
+        profile.user.delete()
+        return Response(status=204)
+
 
 class BloodRequestViewSet(viewsets.ModelViewSet):
     queryset = BloodRequest.objects.all().order_by('-created_at')
@@ -185,16 +226,35 @@ class BloodRequestViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         if self.request.user.userprofile.role != 'patient':
             raise PermissionError('Only patients can create blood requests')
-        serializer.save(patient=self.request.user.userprofile, status='pending')
+        req = serializer.save(patient=self.request.user.userprofile, status='pending')
+        # Immediate broadcast: all verified donors receive the new request notification.
+        donors = UserProfile.objects.filter(role='donor', is_verified=True)
+        for donor in donors:
+            DonorNotification.objects.get_or_create(
+                request=req,
+                donor=donor,
+                defaults={'response_probability': 0.5, 'responded': False, 'willing': False},
+            )
 
     @action(detail=True, methods=['post'], permission_classes=[IsAuthenticated, IsAdminRole])
     def approve(self, request, pk=None):
         obj = self.get_object()
         obj.status = 'approved'
         obj.save(update_fields=['status'])
+        sample_unit = BloodInventoryUnit.objects.filter(status='available').first()
+        if sample_unit:
+            InventoryTransaction.objects.create(
+                unit=sample_unit,
+                action='request_approved',
+                actor=request.user.userprofile,
+                detail=f'Request {obj.id} approved'
+            )
         ranked = donor_candidates_for_request(obj)
+        score_map = {d.id: score for d, _dist, score in ranked}
+        all_donors = UserProfile.objects.filter(role='donor', is_verified=True)
         created = 0
-        for donor, _dist, score in ranked:
+        for donor in all_donors:
+            score = score_map.get(donor.id, 0.35)
             _, made = DonorNotification.objects.get_or_create(
                 request=obj,
                 donor=donor,
@@ -252,6 +312,14 @@ class DonorNotificationViewSet(viewsets.ModelViewSet):
                     'location': note.request.hospital_address,
                 },
             )
+        sample_unit = BloodInventoryUnit.objects.filter(status='available').first()
+        if sample_unit:
+            InventoryTransaction.objects.create(
+                unit=sample_unit,
+                action='donor_response',
+                actor=request.user.userprofile,
+                detail=f'Notification {note.id} responded willing={willing}'
+            )
         return Response({'responded': True, 'willing': willing})
 
 
@@ -259,6 +327,22 @@ class BloodInventoryUnitViewSet(viewsets.ModelViewSet):
     queryset = BloodInventoryUnit.objects.all().order_by('-id')
     serializer_class = BloodInventoryUnitSerializer
     permission_classes = [IsAuthenticated, IsAdminRole]
+
+    @action(detail=False, methods=['post'], permission_classes=[IsAuthenticated, IsAdminRole])
+    def bulk_add(self, request):
+        blood_group = request.data.get('blood_group')
+        units = int(request.data.get('units') or 0)
+        expires_on = request.data.get('expires_on')
+        if units < 1:
+            return Response({'detail': 'units must be >=1'}, status=400)
+        created = []
+        for _ in range(units):
+            created.append(BloodInventoryUnit.objects.create(
+                blood_group=blood_group,
+                status='available',
+                expires_on=expires_on
+            ).id)
+        return Response({'created_units': len(created), 'ids': created}, status=201)
 
 
 class BloodIssuanceViewSet(viewsets.ModelViewSet):
@@ -277,6 +361,16 @@ class DonationAppointmentViewSet(viewsets.ModelViewSet):
         if user.userprofile.role == 'donor':
             return self.queryset.filter(donor=user.userprofile)
         return self.queryset
+
+    @action(detail=True, methods=['post'], permission_classes=[IsAuthenticated])
+    def complete(self, request, pk=None):
+        appt = self.get_object()
+        profile = request.user.userprofile
+        if profile.role not in ('admin',) and appt.donor_id != profile.id:
+            return Response({'detail': 'Forbidden'}, status=403)
+        appt.completed = True
+        appt.save(update_fields=['completed'])
+        return Response({'completed': True, 'id': appt.id, 'completed_at': timezone.now().isoformat()})
 
 
 JWTTokenObtainPairView = TokenObtainPairView
