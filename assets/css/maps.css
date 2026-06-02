@@ -1,0 +1,51 @@
+.map-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 12px 35px rgba(15, 23, 42, 0.07);
+}
+
+.map-toolbar {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 0.75rem;
+  border-bottom: 1px solid #eef2f7;
+  background: #f8fafc;
+}
+
+.map-canvas {
+  width: 100%;
+  min-height: 320px;
+}
+
+.map-canvas.map-sm {
+  min-height: 220px;
+}
+
+.map-canvas.map-lg {
+  min-height: 430px;
+}
+
+.map-hint {
+  padding: 0.65rem 0.9rem;
+  font-size: 0.86rem;
+  color: #475569;
+  background: #f8fafc;
+  border-top: 1px solid #eef2f7;
+}
+
+.leaflet-popup-content {
+  font-family: "DM Sans", sans-serif;
+}
+
+.location-preview {
+  font-size: 0.86rem;
+  color: #334155;
+  padding: 0.5rem 0.65rem;
+  border: 1px dashed #cbd5e1;
+  border-radius: 10px;
+  background: #f8fafc;
+}
+

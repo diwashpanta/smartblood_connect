@@ -1,4 +1,0 @@
-{% extends 'base.html' %}{% block content %}
-<h3 class='mb-3'>Donor Dashboard</h3>
-<div class='card shadow-sm'><div class='card-body'><table class='table'><tr><th>Request</th><th>Probability</th><th>Responded</th></tr>{% for n in notifications %}<tr><td>#{{n.request_id}}</td><td>{{n.response_probability|floatformat:2}}</td><td>{{n.responded}}</td></tr>{% empty %}<tr><td colspan='3'>No notifications</td></tr>{% endfor %}</table></div></div>
-{% endblock %}
