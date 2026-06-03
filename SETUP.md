@@ -35,10 +35,8 @@ If Python is not in PATH, set full path, for example:
 ```env
 SMARTBLOOD_PYTHON=C:\\Python312\\python.exe
 ```
-
-Notes:
 - If `SMARTBLOOD_PYTHON` is set to `python`, the app auto-prefers local `.venv` python when present.
-- Keep `MAP_PROVIDER=osm` unless you have a valid Google Maps API key.
+
 
 ## 4. Create Database
 Open phpMyAdmin or MySQL CLI and run:
